@@ -13,12 +13,12 @@ const HomePage = ({ isAuthenticated, logout }) => (
 
 HomePage.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
-  logout: PropTypes.func.isRequired
+  logout: PropTypes.func.isRequired,
 };
 
 function mapStateToProps(state) {
   return {
-    isAuthenticated: !!state.user.token
-  }
+    isAuthenticated: !!state.user.token,
+  };
 }
 export default connect(mapStateToProps, { logout: actions.logout })(HomePage);
