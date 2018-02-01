@@ -12,6 +12,17 @@ router.post('/', (req, res) => {
       res.status(404).json({ errors: { global: "Invalid User"}});
     }
   })
-})
+});
+
+router.post('/confirmation', (req, res) => {
+  const token = req.body.token;
+  User.findOneAndUpdate(
+    { confirmationToken: token }, 
+    { confirmed: true },
+    { new: true }
+  ).then(user => {
+    user ? res.json({ user: user.toAuthJSON() }) : res.status(400).json()
+  })
+});
 
 export default router;

@@ -9,11 +9,13 @@ import LoginPage from './components/pages/LoginPage';
 import DashboardPage from './components/pages/DashboardPage';
 import TestPage from './components/pages/TestPage';
 import SignupPage from './components/pages/SignupPage';
+import ConfirmationPage from './components/pages/ConfirmationPage';
 
 
 const App = ({ location }) => (
   <div className="ui container">
     <Route exact location={location} path="/" component={HomePage} />
+    <Route location={location} path="/confirmation/:token" exact component={ConfirmationPage} />
     <GuestRoute location={location} path="/login" component={LoginPage} />
     <GuestRoute location={location} path="/signup" component={SignupPage} />
     <UserRoute location={location} path="/dashboard" component={DashboardPage} />
